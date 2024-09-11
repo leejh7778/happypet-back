@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://happypet.aiccchant.com',
+    origin: 'https://happypet.aiccchant.com',
     credentials: true,
   })
 );
