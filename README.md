@@ -5,7 +5,7 @@
 [펫트라슈](https://www.petraschu.com/)
 라는 실제 사이트를 참조하여 만들었습니다.
 
-- 이 Repository에서는 백엔드에 관한 내용만 담고 있습니다.
+- 이 Repository에서는 **백엔드**에 관한 내용만 담고 있습니다.
 - 개발기간 24.08.20 ~ 24.09.03
 - 백엔드 서버: <https://happypetback.aiccchant.com>
 
