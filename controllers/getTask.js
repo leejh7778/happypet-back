@@ -1,6 +1,6 @@
 const database = require('../database/database');
 
-// 예약 정보를 가져오는 함수
+// 예약 정보를 가져오는 함수.
 exports.getReserv = async (req, res) => {
   const userid = req.params.userid; // JWT에서 추출된 로그인된 사용자의 userid
 
