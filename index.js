@@ -44,7 +44,7 @@ app.post('/currency', (req, res) => {
 
     // Listen for data from the Python script
     result.stdout.on('data', (data) => {
-      responseData += data.toString();
+      responseData += data.toString().trim();
     });
 
     // Listen for errors from the Python script
