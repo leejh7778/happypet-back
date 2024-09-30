@@ -23,6 +23,51 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+// 환율 계산
+app.post('/convert', (req, res) => {
+  try {
+    const { amount, base, dest } = req.body; // JSON 바디에서 amount, base, dest 가져오기
+
+    // 파이썬 스크립트 경로
+    const scriptPath = path.join(__dirname, 'currency-converter.py');
+
+    // ec2 서버에서 실행하는 절대 경로: 개발 테스트시 사용 불가
+    const pythonPath = path.join(__dirname, 'venv', 'bin', 'python3');
+
+    // 윈도우에서 파이썬 실행 경로
+    // const pythonPath = path.join(__dirname, 'venv', 'Scripts', 'python.exe');
+
+    // Spawn the Python process with the correct arguments
+    const result = spawn(pythonPath, [scriptPath, amount, base, 'to', dest]);
+
+    let responseData = '';
+
+    // Listen for data from the Python script
+    result.stdout.on('data', (data) => {
+      responseData += data.toString();
+    });
+
+    // Listen for errors from the Python script
+    result.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`);
+      res.status(500).json({ error: data.toString() });
+    });
+
+    // Handle the close event of the child process
+    result.on('close', (code) => {
+      if (code === 0) {
+        res.status(200).json({ answer: responseData });
+      } else {
+        res
+          .status(500)
+          .json({ error: `Child process exited with code ${code}` });
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
 // 채팅 문자열 요청
 app.post('/chat', (req, res) => {
   try {
