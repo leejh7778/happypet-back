@@ -32,10 +32,10 @@ app.post('/chat', (req, res) => {
     const scriptPath = path.join(__dirname, 'bizchat.py');
 
     // ec2 서버에서 실행하는 절대 경로: 개발 테스트시 사용 불가
-    // const pythonPath = path.join(__dirname, 'venv', 'bin', 'python3');
+    const pythonPath = path.join(__dirname, 'venv', 'bin', 'python3');
 
     // 윈도우 개발 테스트시 사용하는 절대 경로
-    const pythonPath = path.join(__dirname, 'venv', 'Scripts', 'python.exe');
+    // const pythonPath = path.join(__dirname, 'venv', 'Scripts', 'python.exe');
 
     // Spawn the Python process with the correct argument
     const result = spawn(pythonPath, [scriptPath, sendedQuestion]);
