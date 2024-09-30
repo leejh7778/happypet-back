@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 // 환율 계산
-app.post('/convert', (req, res) => {
+app.post('/currency', (req, res) => {
   try {
     const { amount, base, dest } = req.body; // JSON 바디에서 amount, base, dest 가져오기
 
