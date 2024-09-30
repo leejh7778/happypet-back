@@ -28,7 +28,7 @@ jobs:
           touch .env
           echo "${{ secrets.PRO_ENV_FILE }}" > .env
           echo "${{ secrets.OPENAI_API_KEY }}" >> .env
-          echo "${{ secrets.CURRENCY_API_KEY }}" >> .env
+          # echo "${{ secrets.CURRENCY_API_KEY }}" >> .env
 
       # Set up Python environment
       - name: Set up Python 3.12.6
