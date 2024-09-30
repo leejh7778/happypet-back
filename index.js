@@ -124,7 +124,7 @@ const authenticateToken = (req, res, next) => {
 };
 
 app.get('/', (request, response) => {
-  response.send('hello World test');
+  response.send('hello World test python');
 });
 
 // 마이페이지 API 엔드포인트
