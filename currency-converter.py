@@ -53,7 +53,8 @@ try:
     result = rates[dest] * amount
     result = round(result, 3)
 
-    print(f'{amount} {base} equals to {result} {dest}')
+    # 출력하기 전에 \n을 제거
+    print(f'{amount} {base} equals to {result} {dest}'.strip())
 
 except Exception as e:
     print(f"Error: {e}")
